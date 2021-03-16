@@ -3,12 +3,12 @@ import Produit from "./Produit";
 import { useEffect, useState } from 'react';
 /******* Ex#3 - Étape D ********************************/ 
 // Importer l'objet bd du fichier firebase.js
-import { bd } from "../data/firebase";
+import bd from "../data/firebase.js";
 
 export default function ListeProduits(props) {
   /******* Ex#3 - Étape E ********************************/ 
   // Créer un "état" React pour les produits (utiliser useState)
-  const [etatProduit, setProduit] = useState([]);
+  const [Produits, setProduit] = useState([]);
 
 
   useEffect(() => {
@@ -47,7 +47,9 @@ export default function ListeProduits(props) {
           avoir l'attribut "etatPanier={props.etatPanier}" quand vous les générer ici : encore une fois, regardez 
           le code de l'exercice de classe.
         */
-          tabProduits.map(prd => <Produit nom={prd.nom} prix={prd.prix} id={prd.id} etatPanier={props.etatPanier} key={prd.id} />)
+          Produits.map( 
+            produit =>  <li key={produit.id}><Produit {...produit} /></li>
+          )
         }
 
       </ul>
